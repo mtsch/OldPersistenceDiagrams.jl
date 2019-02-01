@@ -1,6 +1,6 @@
 # PersistenceDiagrams
 
-[![Build Status](https://travis-ci.org/mtsch/PersistenceDiagrams.jl.svg?branch=master)](https://travis-ci.org/mtsch/PersistenceDiagrams.jl)
+[![Build Status](https://api.travis-ci.com/mtsch/PersistenceDiagrams.jl.svg?branch=master)](https://travis-ci.com/mtsch/PersistenceDiagrams.jl)
 [![codecov.io](http://codecov.io/github/mtsch/PersistenceDiagrams.jl/coverage.svg?branch=master)](http://codecov.io/github/mtsch/PersistenceDiagrams.jl?branch=master)
 
 This is an initial prototype of persistence diagram data structures and some basic plotting
