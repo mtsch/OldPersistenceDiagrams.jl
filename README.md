@@ -1,5 +1,89 @@
 # PersistenceDiagrams
 
 [![Build Status](https://travis-ci.org/mtsch/PersistenceDiagrams.jl.svg?branch=master)](https://travis-ci.org/mtsch/PersistenceDiagrams.jl)
-
 [![codecov.io](http://codecov.io/github/mtsch/PersistenceDiagrams.jl/coverage.svg?branch=master)](http://codecov.io/github/mtsch/PersistenceDiagrams.jl?branch=master)
+
+This is an initial prototype of persistence diagram data structures and some basic plotting
+functions.
+
+Bikeshedding and PRs welcome.
+
+## Tour:
+
+```
+julia> using PersistenceDiagrams
+
+julia> using Plots; plotly()
+
+julia> dgm = Diagram([Interval(sort(rand(2))...) for _ in 1:20], 1)
+20-element Diagram{Interval{Float64},Array{Interval{Float64},1}}:
+ (0.17050636, 0.69380952)
+ (0.15436882, 0.50881140)
+ (0.06208690, 0.52166761)
+ (0.02889810, 0.36845880)
+ (0.10064068, 0.89019805)
+ (0.14241294, 0.49313252)
+ (0.22111787, 0.68588604)
+ (0.53744785, 0.76655790)
+ (0.04177900, 0.73618018)
+ (0.74277560, 0.99967104)
+ (0.56849362, 0.91404889)
+ (0.61580364, 0.74520390)
+ (0.18928214, 0.76860781)
+ (0.03819278, 0.68553901)
+ (0.10885807, 0.37323082)
+ (0.49860083, 0.72742332)
+ (0.96699797, 0.99068342)
+ (0.14207242, 0.70849998)
+ (0.13439350, 0.32771063)
+ (0.60056087, 0.69024775)
+
+julia> birth.(dgm)
+20-element Array{Float64,1}:
+ 0.1705063660267685
+ 0.15436882895302206
+ 0.06208690385214033
+ 0.02889810339334775
+ 0.10064068094609047
+ 0.1424129446364415
+ 0.22111787221810864
+ 0.5374478549140191
+ 0.04177900456596473
+ 0.7427756075616792
+ 0.568493626501529
+ 0.615803648572697
+ 0.18928214080696248
+ 0.038192788341667505
+ 0.10885807220274923
+ 0.49860083560620994
+ 0.9669979757721745
+ 0.14207242511479357
+ 0.13439350489491275
+ 0.6005608707983725
+
+julia> dim(dgm)
+1
+
+julia> filter(i -> birth(i) > 0.1, dgm)
+16-element Diagram{Interval{Float64},Array{Interval{Float64},1}}:
+ (0.17050636, 0.69380952)
+ (0.15436882, 0.50881140)
+ (0.10064068, 0.89019805)
+ (0.14241294, 0.49313252)
+ (0.22111787, 0.68588604)
+ (0.53744785, 0.76655790)
+ (0.74277560, 0.99967104)
+ (0.56849362, 0.91404889)
+ (0.61580364, 0.74520390)
+ (0.18928214, 0.76860781)
+ (0.10885807, 0.37323082)
+ (0.49860083, 0.72742332)
+ (0.96699797, 0.99068342)
+ (0.14207242, 0.70849998)
+ (0.13439350, 0.32771063)
+ (0.60056087, 0.69024775)
+
+julia> barcodeplot(dgm)
+
+julia> diagramplot(dgm)
+```
